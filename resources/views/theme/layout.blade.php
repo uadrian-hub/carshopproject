@@ -72,27 +72,27 @@
     <!-- Hero Section End -->
 
     <!-- Services Section Begin -->
-    @include('theme.includes.services')
+    {{-- @include('theme.includes.services') --}}
     <!-- Services Section End -->
 
     <!-- Feature Section Begin -->
-   @include('theme.includes.feature')
+   {{-- @include('theme.includes.feature') --}}
     <!-- Feature Section End -->
 
     <!-- Car Section Begin -->
-    @include('theme.includes.carsection')
+    {{-- @include('theme.includes.carsection') --}}
     <!-- Car Section End -->
 
     <!-- Chooseus Section Begin -->
-    @include('theme.includes.chooseuse')
+    {{-- @include('theme.includes.chooseuse') --}}
     <!-- Chooseus Section End -->
 
     <!-- Latest Blog Section Begin -->
-    @include('theme.includes.blogsection')
+    {{-- @include('theme.includes.blogsection') --}}
     <!-- Latest Blog Section End -->
 
     <!-- Cta Begin -->
-   @include('theme.includes.ctasection')
+   {{-- @include('theme.includes.ctasection') --}}
     <!-- Cta End -->
 
     <!-- Footer Section Begin -->

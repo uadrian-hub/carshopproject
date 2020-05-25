@@ -11,13 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
-Route::get('/test', function() {
+Route::get('/', function() {
 
     return view('theme.home');
 
 });
+
+Route::get('/cars',['as'=>'searchcar', function() {
+
+    return view('theme.cars.index');
+
+}]);
+
+Route::get('/blog',['as'=>'blog', function() {
+
+    return view('theme.blog.index');
+
+}]);
+
+Route::get('/blog/post',['as'=>'testpostblog', function() {
+
+    return view('theme.blog.show');
+
+}]);
+
+
+
+//Start of group
+Route::group(['middleware'=>'web'], function(){
+
+
+
+
+}); // End of group
+
