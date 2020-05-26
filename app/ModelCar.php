@@ -10,4 +10,10 @@ class ModelCar extends Model
     protected $fillable = [
         'name'
     ];
-}
+
+    public function car()
+    {
+        $this->hasMany(Car::class);
+    }
+
+} // End Of Class

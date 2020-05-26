@@ -23,6 +23,7 @@ class CreateCarsTable extends Migration
             $table->integer('mileage');
             $table->integer('price');
             $table->integer('sale_type');
+            $table->integer('photo_id');
             $table->timestamps();
         });
     }

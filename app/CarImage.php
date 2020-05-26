@@ -11,4 +11,11 @@ class CarImage extends Model
         'unique_sku',
         'path'
     ];
-}
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
+
+
+} // End Of Class

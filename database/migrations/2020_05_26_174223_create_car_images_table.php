@@ -15,7 +15,6 @@ class CreateCarImagesTable extends Migration
     {
         Schema::create('car_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('unique_sku');
             $table->text('path');
             $table->timestamps();
         });
