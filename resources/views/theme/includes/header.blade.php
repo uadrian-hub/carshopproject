@@ -29,18 +29,17 @@
         <div class="row">
             <div class="col-lg-2">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="{{asset('theme/img/logo.png')}}" alt=""></a>
+                    <a href="{{route('home')}}"><img src="{{asset('theme/img/logo.png')}}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-10">
                 <div class="header__nav">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
                             <li><a href="{{route('searchcar')}}">Cars</a></li>
                             <li><a href="{{route('blog')}}">Blog</a></li>
-                            <li><a href="./about.html">About</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="{{route('aboutus')}}">About</a></li>
+                            <li><a href="{{route('contactus')}}">Contact</a></li>
                         </ul>
                     </nav>
                     <div class="header__nav__widget">

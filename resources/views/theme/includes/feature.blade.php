@@ -15,8 +15,8 @@
                             viverra maecenas accumsan lacus vel facilisis.</p>
                     </div>
                     <div class="feature__text__btn">
-                        <a href="#" class="primary-btn">About Us</a>
-                        <a href="#" class="primary-btn partner-btn">Our Partners</a>
+                        <a href="{{route('aboutus')}}" class="primary-btn">About Us</a>
+                        <a href="{{route('contactus')}}" class="primary-btn partner-btn">Contact Us</a>
                     </div>
                 </div>
             </div>

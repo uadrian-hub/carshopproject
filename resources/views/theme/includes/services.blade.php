@@ -16,7 +16,6 @@
                     <h5>Rental A Cars</h5>
                     <p>Consectetur adipiscing elit incididunt ut labore et dolore magna aliqua. Risus commodo
                         viverra maecenas.</p>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -25,7 +24,6 @@
                     <h5>Buying A Cars</h5>
                     <p>Consectetur adipiscing elit incididunt ut labore et dolore magna aliqua. Risus commodo
                         viverra maecenas.</p>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -34,7 +32,6 @@
                     <h5>Car Maintenance</h5>
                     <p>Consectetur adipiscing elit incididunt ut labore et dolore magna aliqua. Risus commodo
                         viverra maecenas.</p>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -43,7 +40,6 @@
                     <h5>Support 24/7</h5>
                     <p>Consectetur adipiscing elit incididunt ut labore et dolore magna aliqua. Risus commodo
                         viverra maecenas.</p>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
         </div>

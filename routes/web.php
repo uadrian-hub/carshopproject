@@ -12,11 +12,11 @@
 */
 
 
-Route::get('/', function() {
+Route::get('/',['as'=>'home', function() {
 
     return view('theme.home');
 
-});
+}]);
 
 Route::get('/cars',['as'=>'searchcar', function() {
 
@@ -36,6 +36,19 @@ Route::get('/blog/post',['as'=>'testpostblog', function() {
 
 }]);
 
+Route::get('/about',['as'=>'aboutus', function() {
+
+    return view('theme.faq.about');
+
+}]);
+
+Route::get('/contact',['as'=>'contactus', function() {
+
+    return view('theme.faq.contact');
+
+}]);
+
+
 
 
 //Start of group
@@ -46,3 +59,7 @@ Route::group(['middleware'=>'web'], function(){
 
 }); // End of group
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
