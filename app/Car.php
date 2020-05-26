@@ -16,6 +16,7 @@ class Car extends Model
         'mileage',
         'price',
         'sale_type',
+        'condition_id',
         'photo_id'
     ];
 
@@ -42,6 +43,11 @@ class Car extends Model
     public function carBrand()
     {
         return $this->belongsToMany(Brand::class);
+    }
+
+    public function carCondition()
+    {
+        return $this->belongsTo(Condition::class);
     }
 
 } // End Of Class
