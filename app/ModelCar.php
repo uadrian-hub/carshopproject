@@ -13,7 +13,7 @@ class ModelCar extends Model
 
     public function car()
     {
-       return $this->hasMany(Car::class);
+       return $this->belongsTo(Car::class);
     }
 
     public function brand()

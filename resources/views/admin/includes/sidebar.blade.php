@@ -27,8 +27,13 @@
 						data-parent="#sidebar-menu">
 						<div class="sub-menu">
 							<li>
-								<a class="sidenav-item-link" href="#">
+								<a class="sidenav-item-link" href="{{route('cars.index')}}">
 								<span class="nav-text">Cars</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="{{route('brand.index')}}">
+								<span class="nav-text">Brand</span>
 								</a>
 							</li>
 							<li>

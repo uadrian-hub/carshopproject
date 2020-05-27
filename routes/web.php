@@ -64,7 +64,11 @@ Route::group(
     ['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['web']],
     function() {
         Route::get('dashboard','DashboardController@index');
+        Route::resource('cars', 'CarController');
+        Route::resource('brands', 'BrandController');
         //
+
+
     }
 ); // End Of Group
 

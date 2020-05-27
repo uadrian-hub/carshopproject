@@ -11,11 +11,4 @@ class Category extends Model
         'name'
     ];
 
-    public function car()
-    {
-      return $this->belongsTo(Car::class);
-    }
-
-
-    
 } // End Of Class

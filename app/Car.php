@@ -37,17 +37,22 @@ class Car extends Model
 
     public function carModel()
     {
-        return $this->belongsToMany(ModelCar::class);
+        return $this->belongsTo(ModelCar::class);
     }
 
     public function carBrand()
     {
-        return $this->belongsToMany(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
 
     public function carCondition()
     {
-        return $this->belongsTo(Condition::class);
+        return $this->belongsTo(Condition::class, 'condition_id');
+    }
+
+    public function offer()
+    {
+        return $this->belongsTo(Offer::class, 'sale_type');
     }
 
 } // End Of Class
