@@ -13,7 +13,13 @@ class ModelCar extends Model
 
     public function car()
     {
-        $this->hasMany(Car::class);
+       return $this->hasMany(Car::class);
     }
+
+    public function brand()
+    {
+       return $this->hasMany(Brand::class);
+    }
+
 
 } // End Of Class

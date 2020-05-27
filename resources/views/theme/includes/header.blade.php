@@ -43,11 +43,8 @@
                         </ul>
                     </nav>
                     <div class="header__nav__widget">
-                        <div class="header__nav__widget__btn">
-                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                            <a href="#" class="search-switch"><i class="fa fa-search"></i></a>
-                        </div>
-                        <a href="#" class="primary-btn">Add Car</a>
+                        
+                        
                     </div>
                 </div>
             </div>

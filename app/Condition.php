@@ -11,7 +11,7 @@ class Condition extends Model
 
     public function car()
     {
-        $this->hasMany(Car::class);
+       return $this->hasMany(Car::class);
     }
 
 } // End of class

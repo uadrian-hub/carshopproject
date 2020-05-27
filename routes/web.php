@@ -60,6 +60,17 @@ Route::group(['middleware'=>'web'], function(){
 }); // End of group
 
 
+Route::group(
+    ['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['web']],
+    function() {
+        Route::get('dashboard','DashboardController@index');
+        //
+    }
+); // End Of Group
+
+
+
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

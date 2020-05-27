@@ -13,17 +13,17 @@ class Body extends Model
 
     public function car()
     {
-        $this->belongsTo(Car::class);
+       return $this->belongsTo(Car::class);
     }
 
     public function brand()
     {
-        $this->hasMany(Brand::class);
+       return $this->hasMany(Brand::class);
     }
 
     public function modelCar()
     {
-        $this->hasMany(ModelCar::class);
+       return $this->hasMany(ModelCar::class);
     }
 
 
