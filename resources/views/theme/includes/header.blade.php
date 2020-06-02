@@ -40,6 +40,16 @@
                             <li><a href="{{route('blog')}}">Blog</a></li>
                             <li><a href="{{route('aboutus')}}">About</a></li>
                             <li><a href="{{route('contactus')}}">Contact</a></li>
+                        @if(!Auth::check())
+                            <li><a href="{{route('login')}}">Login</a></li>
+                            @else
+                            <li><a href="">Panel</a></li>
+                            @endif
+                            @if(Auth::user())
+                            @if(Auth::user()->isAdmin())
+                            <li><a href="{{route('admindashboard')}}">Admin Panel</a></li>
+                            @endif
+                            @endif
                         </ul>
                     </nav>
                     <div class="header__nav__widget">

@@ -1,6 +1,7 @@
 @extends('theme.layout')
 
 @section('content')
+@include('theme.includes.carJs')
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option set-bg" data-setbg="{{asset('theme/img/breadcrumb-bg.jpg')}}">
     <div class="container">
@@ -9,8 +10,8 @@
                 <div class="breadcrumb__text">
                     <h2>Car Listing</h2>
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>About</span>
+                        <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                        <span>Cars</span>
                     </div>
                 </div>
             </div>
@@ -34,56 +35,37 @@
                     </div>
                     <div class="car__filter">
                         <h5>Car Filter</h5>
-                        <form action="#">
-                            <select>
+                        <form method="GET" action="{{action('CarController@index')}}">
+                            
+                            <select name="brand" id="brand_id">
                                 <option data-display="Brand">Select Brand</option>
-                                <option value="">Acura</option>
-                                <option value="">Audi</option>
-                                <option value="">Bentley</option>
-                                <<option value="">BMW</option>
-                                <option value="">Bugatti</option>
+                                @foreach(App\Brand::all() as $brand)
+                               <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                @endforeach
                             </select>
-                            <select>
+                            {{-- <select name="" id="model_id">
                                 <option data-display="Model">Select Model</option>
-                                <option value="">Q3</option>
-                                <option value="">A4 </option>
-                                <option value="">AVENTADOR</option>
+                                @foreach(App\ModelCar::all() as $model)
+                                <option value="{{$model->id}}">{{$model->name}}</option>
+                                @endforeach
                             </select>
-                            <select>
-                                <option value="">Body Style</option>
-                                <option value="">Option 1</option>
-                                <option value="">Option 2</option>
-                            </select>
-                            <select>
+                            <select id="body_id">
+                                <option data-display="Body" value="">Body Style</option>
+                                @foreach(App\Body::all() as $body)
+                                <option value="{{$body->id}}">{{$body->name}}</option>
+                                @endforeach
+                            </select> --}}
+                            <select name="condId" id="condition_id">
                                 <option value="">Condition</option>
-                                <option value="">First Hand</option>
-                                <option value="">Second Hand</option>
+                                @foreach(App\Condition::all() as $condition)
+                                <option value="{{$condition->id}}">{{$condition->name}}</option>
+                                @endforeach
                             </select>
-                            <select>
-                                <option value="">Transmisson</option>
-                                <option value="">Bluetooth</option>
-                                <option value="">WiFi</option>
-                            </select>
-                            <select>
-                                <option value="">Mileage</option>
-                                <option value="">27</option>
-                                <option value="">20</option>
-                                <option value="">15</option>
-                                <option value="">10</option>
-                            </select>
-                            <select>
-                                <option value="">Engine</option>
-                                <option value="">BS3</option>
-                                <option value="">BS4</option>
-                                <option value="">BS5</option>
-                                <option value="">BS6</option>
-                            </select>
-                            <select>
-                                <option value="">Colors</option>
-                                <option value="">Red</option>
-                                <option value="">Blue</option>
-                                <option value="">Black</option>
-                                <option value="">Yellow</option>
+                            <select name="transmision" class="transId">
+                                <option value="">Transmission</option>
+                                @foreach(App\Transmision::all() as $transmision)
+                                <option value="{{$transmision->id}}">{{$transmision->type}}</option>
+                                @endforeach
                             </select>
                             <div class="filter-price">
                                 <p>Price:</p>
@@ -97,9 +79,15 @@
                                 </div>
                             </div>
                             <div class="car__filter__btn">
-                                <button type="submit" class="site-btn">Reset FIlter</button>
+                                <button type="submit" class="site-btn">Filter</button>
                             </div>
+                            <br>
                         </form>
+                        <form method="GET" action="{{action('CarController@index')}}">
+                        <div class="car__filter__btn">
+                            <button type="submit" class="site-btn">Reset Filter</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -128,7 +116,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-4">
+                    @foreach($cars as $car)
+                    <div class="col-lg-5 col-md-4">
                         <div class="car__item">
                             <div class="car__item__pic__slider owl-carousel">
                                 <img src="{{asset('theme/img/cars/car-1.jpg')}}" alt="">
@@ -138,221 +127,23 @@
                             </div>
                             <div class="car__item__text">
                                 <div class="car__item__text__inner">
-                                    <div class="label-date">2016</div>
-                                    <h5><a href="#">Porsche cayenne turbo s</a></h5>
+                                    <div class="label-date">{{$car->year}}</div>
+                                    <h5><a href="{{route('showcar', $car->id)}}">{{$car->name}}</a></h5>
                                     <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
+                                        <li><span>{{$car->mileage}}</span> mi</li>
+                                        <li>{{$car->transmision->type}}</li>
+                                        <li><span>{{$car->horsepower}}</span> hp</li>
                                     </ul>
                                 </div>
                                 <div class="car__item__price">
-                                    <span class="car-option">For Rent</span>
+                                    <span class="car-option">{{$car->offer->name}}</span>
                                     <h6>$218<span>/Month</span></h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-2.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-6.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-4.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2020</div>
-                                    <h5><a href="#">Toyota camry asv50l-jeteku</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option sale">For Sale</span>
-                                    <h6>$73,900</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-3.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-6.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-5.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2017</div>
-                                    <h5><a href="#">Bmw s1000rr 2019 m</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option">For Rent</span>
-                                    <h6>$299<span>/Month</span></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-5.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-7.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-2.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2018</div>
-                                    <h5><a href="#">Audi q8 2020</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option">For Rent</span>
-                                    <h6>$319<span>/Month</span></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-6.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-3.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-1.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2016</div>
-                                    <h5><a href="#">Mustang shelby gt500</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option sale">For Sale</span>
-                                    <h6>$730,900</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-4.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-2.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-1.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2019</div>
-                                    <h5><a href="#">Lamborghini huracan evo</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option">For Rent</span>
-                                    <h6>$319<span>/Month</span></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-7.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-2.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-4.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-1.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2020</div>
-                                    <h5><a href="#">Lamborghini huracan evo</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option sale">For Sale</span>
-                                    <h6>$120,000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-3.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-5.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-2.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2017</div>
-                                    <h5><a href="#">Porsche cayenne turbo s</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option">For Rent</span>
-                                    <h6>$319<span>/Month</span></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="car__item">
-                            <div class="car__item__pic__slider owl-carousel">
-                                <img src="{{asset('theme/img/cars/car-8.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-3.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-5.jpg')}}" alt="">
-                                <img src="{{asset('theme/img/cars/car-2.jpg')}}" alt="">
-                            </div>
-                            <div class="car__item__text">
-                                <div class="car__item__text__inner">
-                                    <div class="label-date">2020</div>
-                                    <h5><a href="#">Toyota camry asv50l-jeteku</a></h5>
-                                    <ul>
-                                        <li><span>35,000</span> mi</li>
-                                        <li>Auto</li>
-                                        <li><span>700</span> hp</li>
-                                    </ul>
-                                </div>
-                                <div class="car__item__price">
-                                    <span class="car-option sale">For sale</span>
-                                    <h6>$73,900</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
                 <div class="pagination__option">
                     <a href="#" class="active">1</a>

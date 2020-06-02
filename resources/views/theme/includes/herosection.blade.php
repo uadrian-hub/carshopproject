@@ -29,60 +29,44 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="hero__tab__form">
                                 <h2>Find Your Dream Car</h2>
-                                <form>
+                                <form method="GET" action="">
+                                    @csrf
                                     <div class="select-list">
                                         <div class="select-list-item">
                                             <p>Select Year</p>
                                             <select>
                                                 <option data-display=" ">Select Year</option>
-                                                <option value="">2020</option>
-                                                <option value="">2019</option>
-                                                <option value="">2018</option>
-                                                <option value="">2017</option>
-                                                <option value="">2016</option>
-                                                <option value="">2015</option>
+                                                @foreach(App\Car::all() as $carYear)
+                                                <option name="yearId" value="{{$carYear->year}}">{{$carYear->year}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Brand</p>
                                             <select>
                                                 <option data-display=" ">Select Brand</option>
-                                                <option value="">Acura</option>
-                                                <option value="">Audi</option>
-                                                <option value="">Bentley</option>
-                                                <option value="">BMW</option>
-                                                <option value="">Bugatti</option>
+                                                @foreach(App\Brand::all() as $carBrand)
+                                                <option name="brandId" value="{{$carBrand->id}}">{{$carBrand->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="select-list-item">
-                                            <p>Select Model</p>
+                                            <p>Select Type</p>
                                             <select>
-                                                <option data-display=" ">Select Model</option>
-                                                <option value="">Q3</option>
-                                                <option value="">A4 </option>
-                                                <option value="">AVENTADOR</option>
+                                                <option data-display=" ">Select Sale Type</option>
+                                                @foreach(App\Offer::all() as $carOffer)
+                                                <option value="{{$carOffer->id}}">{{$carOffer->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="select-list-item">
-                                            <p>Select Mileage</p>
+                                            <p>Select Condition</p>
                                             <select>
-                                                <option data-display=" ">Select Mileage</option>
-                                                <option value="">27</option>
-                                                <option value="">25</option>
-                                                <option value="">15</option>
-                                                <option value="">10</option>
+                                                <option data-display=" ">Select Condition</option>
+                                                @foreach(App\Condition::all() as $carCond)
+                                                <option name="condId" value="{{$carCond->id}}">{{$carCond->name}}</option>
+                                                @endforeach
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="car-price">
-                                        <p>Price Range:</p>
-                                        <div class="price-range-wrap">
-                                            <div class="price-range"></div>
-                                            <div class="range-slider">
-                                                <div class="price-input">
-                                                    <input type="text" id="amount">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="site-btn">Searching</button>

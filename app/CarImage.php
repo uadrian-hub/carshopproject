@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarImage extends Model
 {
-    
-    protected $fillable = [
-        'unique_sku',
-        'path'
-    ];
+    protected $uploads = '/images/';
+    protected $fillable = ['path'];
 
-    public function car()
+
+    public function getPathAttribute($carImage)
     {
-        return $this->belongsTo(Car::class);
+        return $this->uploads . $carImage;
     }
+
 
 
 } // End Of Class

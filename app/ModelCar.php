@@ -8,17 +8,13 @@ class ModelCar extends Model
 {
     
     protected $fillable = [
-        'name'
+        'name',
+        'brand_id'
     ];
 
-    public function car()
+    public function brands()
     {
-       return $this->belongsTo(Car::class);
-    }
-
-    public function brand()
-    {
-       return $this->hasMany(Brand::class);
+        return $this->belongsToMany(Brand::class, 'brand_models', 'brand_id', 'model_id');
     }
 
 

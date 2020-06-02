@@ -12,62 +12,42 @@
 */
 
 
-Route::get('/',['as'=>'home', function() {
-
-    return view('theme.home');
-
-}]);
-
-Route::get('/cars',['as'=>'searchcar', function() {
-
-    return view('theme.cars.index');
-
-}]);
-
-Route::get('/blog',['as'=>'blog', function() {
-
-    return view('theme.blog.index');
-
-}]);
-
-Route::get('/blog/post',['as'=>'testpostblog', function() {
+Route::get('/blog/post',['as'=>'testpostblog', function() {  // For display purpose only while managing content
 
     return view('theme.blog.show');
 
 }]);
 
-Route::get('/about',['as'=>'aboutus', function() {
-
-    return view('theme.faq.about');
-
-}]);
-
-Route::get('/contact',['as'=>'contactus', function() {
-
-    return view('theme.faq.contact');
-
-}]);
-
-
 
 
 //Start of group
-Route::group(['middleware'=>'web'], function(){
+Route::group(['middleware'=>'web'], function(){   // Home page group with all the links
 
-
-
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/cars', 'CarController@index')->name('searchcar');
+    Route::get('/car/{id}', 'CarController@showCar')->name('showcar');
+    Route::get('/car/{id}/book', 'CarController@bookCar')->name('bookcar');
+    Route::get('/blog', 'HomeController@blog')->name('blog');
+    Route::get('/about', 'HomeController@about')->name('aboutus');
+    Route::get('/contact', 'HomeController@contact')->name('contactus');
 
 }); // End of group
 
 
-Route::group(
-    ['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['web']],
-    function() {
-        Route::get('dashboard','DashboardController@index');
+Route::group(        // Admin panel group
+    ['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['admin']],
+    function() {  
+        Route::get('dashboard','DashboardController@index')->name('admindashboard');
         Route::resource('cars', 'CarController');
         Route::resource('brands', 'BrandController');
+        Route::resource('models', 'ModelController');
+        Route::get('attachto', 'ModelController@attachToModel')->name('attachto');
+        Route::resource('employees', 'EmployeesController');
+        Route::get('roles', 'RoleEmployeesController@index')->name('rolesemployees');
+        Route::post('role/create', 'RoleEmployeesController@store')->name('createrole');
+        Route::delete('role/delete/{id}', 'RoleEmployeesController@destroy')->name('roledelete');
+        Route::resource('users', 'UserController');
         //
-
 
     }
 ); // End Of Group

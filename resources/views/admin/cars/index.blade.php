@@ -7,11 +7,13 @@
         <div class="col-lg-12">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
-                    <h2>Cars</h2>
+                    <h4><a href="{{route('cars.create')}}">Add Car</a></h4>
                 </div>
+                
                 <div class="card-body">
                     <table class="table table-bordered table-stripped">
                         <thead>
+                            <th>Photo</th>
                             <th>ID</th>
                             <th>VIN</th>
                             <th>Name</th>
@@ -21,20 +23,25 @@
                             <th>Sale Type</th>
                             <th>Condition</th>
                             <th>Posted At</th>
+                            <th>Model</th>
+                            <th>Brand</th>
                             <th>See Car</th>
                         </thead>
                         <tbody>
                             @foreach($cars as $car)
                                 <tr>   
+                                    <td><img height="70" src="{{$car->carImage ? $car->carImage->path : 'No Photo'}}"></td>
                                     <td>{{$car->id}}</td>
                                     <td>{{$car->unique_sku}}</td>
                                     <td>{{$car->name}}</td>
                                     <td>{{$car->year}}</td>
                                     <td>{{$car->mileage}}</td>
-                                    <td>{{$car->price}}</td>
+                                    <td>{{number_format($car->price)}}$</td>
                                     <td>{{$car->offer ? $car->offer->name : 'Not yet defined'}}</td>
                                     <td>{{$car->carCondition ? $car->carCondition->name : 'Under Inspection'}}</td>
                                     <td>{{$car->created_at ? $car->created_at->diffForHumans() : 'Unknown'}}</td>
+                                    <td>{{$car->carModel ? $car->carModel->name : 'Unknown'}}</td>
+                                    <td>{{$car->carBrand ? $car->carBrand->name : 'Unknown'}}</td>
                                     <td><a href="">Link</a></td>
                                 </tr>
                             @endforeach

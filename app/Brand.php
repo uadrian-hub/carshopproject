@@ -7,20 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     
-    protected $fillalbe = [
-        'name'
+    protected $fillable = [
+        'name',
     ];
 
 
-    public function car()
+    public function models()
     {
-       return $this->hasMany(Car::class);
+        return $this->belongsToMany(ModelCar::class, 'brand_models', 'brand_id', 'model_id');
     }
-
-    public function modelCar()
-    {
-       return $this->belongsTo(ModelCar::class);
-    }
-
-
+            
 }

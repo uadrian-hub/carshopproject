@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Car;
 use App\Offer;
 use App\Condition;
+use App\Brand;
+use App\ModelCar;
+use App\CarImage;
 
 class CarController extends Controller
 {
@@ -17,10 +20,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        $offers = Offer::all();
-        $conditions = Condition::all();
+
         $this->data['cars'] = Car::orderBy('name')->paginate(10);
-        return view('admin.cars.index', $this->data , compact('offers', 'conditions'));
+        return view('admin.cars.index', $this->data);
     }
 
     /**
@@ -30,7 +32,11 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $this->data['conditions'] = Condition::all();
+        $this->data['offers'] = Offer::all();
+        $this->data['brands'] = Brand::all();
+        $this->data['models'] = ModelCar::all();
+        return view('admin.cars.create', $this->data);
     }
 
     /**
@@ -41,7 +47,20 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $input = $request->all();
+       if($file = $request->file('photo_id'))
+       {
+           $name = time() . $file->getClientOriginalName();
+           $file->move('images', $name);
+
+           $photo = CarImage::create(['path'=>$name]);
+           $input['photo_id'] = $photo->id;
+
+       }
+
+       Car::create($input);
+       return redirect()->back();
+
     }
 
     /**

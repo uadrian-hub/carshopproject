@@ -17,32 +17,35 @@ class Car extends Model
         'price',
         'sale_type',
         'condition_id',
-        'photo_id'
+        'photo_id',
+        'brand',
+        'transmision_type',
+        'model'
     ];
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function carImage()
     {
-        return $this->belongsTo(CarImage::class);
+        return $this->belongsTo(CarImage::class, 'photo_id');
     }
 
     public function carBody()
     {
-        return $this->belongsToMany(Body::class);
+        return $this->belongsTo(Body::class);
     }
 
     public function carModel()
     {
-        return $this->belongsTo(ModelCar::class);
+        return $this->belongsTo(ModelCar::class, 'model');
     }
 
     public function carBrand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class, 'brand');
     }
 
     public function carCondition()
@@ -54,5 +57,11 @@ class Car extends Model
     {
         return $this->belongsTo(Offer::class, 'sale_type');
     }
+
+    public function transmision()
+    {
+        return $this->belongsTo(Transmision::class, 'transmision_type');
+    }
+
 
 } // End Of Class

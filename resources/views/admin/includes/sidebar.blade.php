@@ -32,18 +32,13 @@
 								</a>
 							</li>
 							<li>
-								<a class="sidenav-item-link" href="{{route('brand.index')}}">
+								<a class="sidenav-item-link" href="{{route('brands.index')}}">
 								<span class="nav-text">Brand</span>
 								</a>
 							</li>
 							<li>
-								<a class="sidenav-item-link" href="#">
-								<span class="nav-text">Employees</span>
-								</a>
-							</li>
-							<li>
-								<a class="sidenav-item-link" href="#">
-								<span class="nav-text">Attributes</span>
+								<a class="sidenav-item-link" href="{{route('models.index')}}">
+								<span class="nav-text">Models</span>
 								</a>
 							</li>
 						</div>
@@ -60,17 +55,17 @@
 						data-parent="#sidebar-menu">
 						<div class="sub-menu">
 							<li>
-								<a class="sidenav-item-link" href="#">
+								<a class="sidenav-item-link" href="{{route('users.index')}}">
 								<span class="nav-text">Users</span>
 								</a>
                             </li>
                             <li>
-								<a class="sidenav-item-link" href="#">
+								<a class="sidenav-item-link" href="{{route('employees.index')}}">
 								<span class="nav-text">Employees</span>
 								</a>
 							</li>
 							<li>
-								<a class="sidenav-item-link" href="#">
+								<a class="sidenav-item-link" href="{{route('rolesemployees')}}">
 								<span class="nav-text">Roles</span>
 								</a>
 							</li>
