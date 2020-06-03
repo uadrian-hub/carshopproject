@@ -12,6 +12,7 @@
 		<link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 		<!-- PLUGINS CSS STYLE -->
 		<link href="{{ URL::asset('admin/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
+		<link rel="stylesheet" href="{{ URL::asset('admin/css/table.css')}}">
 		<!-- No Extra plugin used -->  
 		<link href="{{ URL::asset('admin/plugins/jvectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" />
 		<link href="{{ URL::asset('admin/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />

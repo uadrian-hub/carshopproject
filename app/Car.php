@@ -63,5 +63,10 @@ class Car extends Model
         return $this->belongsTo(Transmision::class, 'transmision_type');
     }
 
+    public function booking()
+    {
+        return $this->belongsTo(BookTest::class);
+    }
+
 
 } // End Of Class

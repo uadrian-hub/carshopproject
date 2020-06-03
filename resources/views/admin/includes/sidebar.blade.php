@@ -100,7 +100,38 @@
 						</div>
 					</ul>
                 </li>             
-                
+				
+				
+				<li>
+					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tools"
+						aria-expanded="false" aria-controls="dashboard">
+						<i class="mdi mdi-blur"></i>
+						<span class="nav-text"> Tools &amp; Appoiments </span> <b class="caret"></b>
+					</a>
+					<ul class="collapse" id="tools"
+						data-parent="#sidebar-menu">
+						<div class="sub-menu">
+							<li>
+								<a class="sidenav-item-link" href="{{route('appoiments.index')}}">
+								<span class="nav-text">Test Drives Appoiments</span>
+								</a>
+                            </li>
+                            <li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">View Cars Appoiments</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Financial Appoiments</span>
+								</a>
+							</li>
+						</div>
+					</ul>
+                </li>   
+
+
+
 
 			</ul>
 		</div>

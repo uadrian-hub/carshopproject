@@ -426,7 +426,7 @@
                             <li>Year <span>{{$cars->year}}</span></li>
                             <li>Vin <span>{{$cars->unique_sku}}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Book A Test Drive</a>
+                        <a href="{{route('bookcar', $cars->id)}}" class="primary-btn">Book A Test Drive</a>
                         <p>{{$cars->name}}</p>
                     </div>
                     <div class="car__details__sidebar__payment">

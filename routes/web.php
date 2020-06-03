@@ -27,6 +27,7 @@ Route::group(['middleware'=>'web'], function(){   // Home page group with all th
     Route::get('/cars', 'CarController@index')->name('searchcar');
     Route::get('/car/{id}', 'CarController@showCar')->name('showcar');
     Route::get('/car/{id}/book', 'CarController@bookCar')->name('bookcar');
+    Route::post('/car/booked', 'BookingController@store')->name('createbooking');
     Route::get('/blog', 'HomeController@blog')->name('blog');
     Route::get('/about', 'HomeController@about')->name('aboutus');
     Route::get('/contact', 'HomeController@contact')->name('contactus');
@@ -46,6 +47,7 @@ Route::group(        // Admin panel group
         Route::get('roles', 'RoleEmployeesController@index')->name('rolesemployees');
         Route::post('role/create', 'RoleEmployeesController@store')->name('createrole');
         Route::delete('role/delete/{id}', 'RoleEmployeesController@destroy')->name('roledelete');
+        Route::resource('appoiments', 'AppoimentController');
         Route::resource('users', 'UserController');
         //
 

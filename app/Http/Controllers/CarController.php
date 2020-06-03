@@ -140,4 +140,10 @@ class CarController extends Controller
     }
 
 
+    public function bookCar($id)
+    {
+        $cars = Car::findOrFail($id);
+        return view('theme.cars.book', compact('cars'));
+    }
+
 }

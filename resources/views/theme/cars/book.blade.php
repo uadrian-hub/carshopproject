@@ -27,8 +27,8 @@
             <div class="col-lg-6 col-md-6">
                 <div class="contact__text">
                     <div class="section-title">
-                        <h2>Let’s Work Together</h2>
-                        <p>To make requests for further information, contact us via our social channels.</p>
+                        <h2>Let's take it for a ride</h2>
+                        <p>We may need aditional informations before finishing your booking, we will let you know , if that is not the case you will get an email with the test drive date , whitch can be changed after.</p>
                     </div>
                     <ul>
                         <li><span>Weekday</span> 08:00 am to 18:00 pm</li>
@@ -39,18 +39,45 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <form action="#">
+                    <form action="{{action('BookingController@store')}}" method="POST">
+                        @csrf
+                        <input type="hidden" value="{{$cars->unique_sku}}" name="unique_sku">
+                        <input type="hidden" value="{{$cars->id}}" name="car_id">
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
+                                <input type="text" placeholder="First Name" name="first_name">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Email">
+                                <input type="text" placeholder="Last Name" name="last_name">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Email" name="email">
+                            </div>
+                            <br>
+                            
+                        </div>
+                        
+                        <h3>Car Details</h3>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label for="brandId">Brand</label>
+                                <input type="text" value="{{$cars->carBrand->name}}" name="brandId" disabled="disabled">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="modelId">Model</label>
+                                <input type="text" value="{{$cars->carModel->name}}" name="modelId" disabled="disabled">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="hsId">HS</label>
+                                <input type="text" value="{{$cars->horsepower}}" name="hsId" disabled="disabled">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="transmisionId">Transmission</label>
+                                <input type="text" value="{{$cars->transmision->type}}" name="transmisionId" disabled="disabled">
                             </div>
                         </div>
-                        <input type="text" placeholder="Subject">
-                        <textarea placeholder="Your Question"></textarea>
-                        <button type="submit" class="site-btn">Submit Now</button>
+                        <button type="submit" class="site-btn">Request test drive</button>
                     </form>
                 </div>
             </div>
