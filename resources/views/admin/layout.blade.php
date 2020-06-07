@@ -10,9 +10,14 @@
 		<!-- GOOGLE FONTS -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
 		<link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
+
+		<!-- Calendar -->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+
+
 		<!-- PLUGINS CSS STYLE -->
 		<link href="{{ URL::asset('admin/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
-		<link rel="stylesheet" href="{{ URL::asset('admin/css/table.css')}}">
+		{{-- <link rel="stylesheet" href="{{ URL::asset('admin/css/table.css')}}"> --}}
 		<!-- No Extra plugin used -->  
 		<link href="{{ URL::asset('admin/plugins/jvectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" />
 		<link href="{{ URL::asset('admin/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
@@ -77,5 +82,8 @@
 	<script src="{{ URL::asset('admin/plugins/toastr/toastr.min.js') }}"></script>
 	<script src="{{ URL::asset('admin/js/sleek.bundle.js') }}"></script>
 	<script src="{{ URL::asset('admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+	@yield('scripts')
+
 	</body>
 </html>

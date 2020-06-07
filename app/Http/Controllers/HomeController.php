@@ -43,10 +43,7 @@ class HomeController extends Controller
         return view('theme.faq.about');
     }
 
-    public function contact()
-    {
-        return view('theme.faq.contact');
-    }
+  
 
   
 

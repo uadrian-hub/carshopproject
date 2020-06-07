@@ -10,7 +10,7 @@
                 <div class="breadcrumb__text">
                     <h2>Contact Us</h2>
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
                         <span>Contact Us</span>
                     </div>
                 </div>
@@ -39,17 +39,18 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <form action="#">
+                    <form action="{{ action('ContactController@storeContact') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
+                                <input type="text" placeholder="Name" name="name">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Email">
+                                <input type="text" placeholder="Email" name="email">
                             </div>
                         </div>
-                        <input type="text" placeholder="Subject">
-                        <textarea placeholder="Your Question"></textarea>
+                        <input type="text" name="subject" placeholder="Subject">
+                        <textarea placeholder="Your Question" name="question"></textarea>
                         <button type="submit" class="site-btn">Submit Now</button>
                     </form>
                 </div>

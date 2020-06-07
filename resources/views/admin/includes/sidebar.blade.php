@@ -112,26 +112,79 @@
 						data-parent="#sidebar-menu">
 						<div class="sub-menu">
 							<li>
-								<a class="sidenav-item-link" href="{{route('appoiments.index')}}">
+								<a class="sidenav-item-link" href="{{route('events.index')}}">
 								<span class="nav-text">Test Drives Appoiments</span>
-								</a>
-                            </li>
-                            <li>
-								<a class="sidenav-item-link" href="#">
-								<span class="nav-text">View Cars Appoiments</span>
 								</a>
 							</li>
 							<li>
 								<a class="sidenav-item-link" href="#">
-								<span class="nav-text">Financial Appoiments</span>
+								<span class="nav-text">Mark/Edit Appoiments</span>
 								</a>
-							</li>
+                            </li>
 						</div>
 					</ul>
                 </li>   
 
+				<li>
+					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#blog"
+						aria-expanded="false" aria-controls="dashboard">
+						<i class="mdi mdi-pen"></i>
+						<span class="nav-text"> Blog &amp; Posts </span> <b class="caret"></b>
+					</a>
+					<ul class="collapse" id="blog"
+						data-parent="#sidebar-menu">
+						<div class="sub-menu">
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Posts</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Categories</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Comments</span>
+								</a>
+                            </li>
+						</div>
+					</ul>
+                </li>   
 
-
+				<li>
+					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#ticket"
+						aria-expanded="false" aria-controls="dashboard">
+						<i class="mdi mdi-wechat"></i>
+						<span class="nav-text"> Tickets &amp; Chat </span> <b class="caret"></b>
+					</a>
+					<ul class="collapse" id="ticket"
+						data-parent="#sidebar-menu">
+						<div class="sub-menu">
+							<li>
+								<a class="sidenav-item-link" href="{{route('tickets.index')}}">
+								<span class="nav-text">Tickets</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Conversations</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Request Call Backs</span>
+								</a>
+							</li>
+							<li>
+								<a class="sidenav-item-link" href="#">
+								<span class="nav-text">Talk to your manager</span>
+								</a>
+                            </li>
+						</div>
+					</ul>
+                </li>   
 
 			</ul>
 		</div>

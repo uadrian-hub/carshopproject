@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\BookTest;
-use App\Car;
+use App\Http\Controllers\Controller;
+use App\Ticket;
 
-class BookingController extends Controller
+class TicketChatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::all();
+        return view('admin.tickets.index')->with(['tickets' => $tickets]);
     }
 
     /**
@@ -25,8 +26,7 @@ class BookingController extends Controller
      */
     public function create()
     {
-        $cars = Car::all();
-        return view('theme.cars.book');
+        //
     }
 
     /**
@@ -37,14 +37,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        if(!$input){
-            echo "Something went wrong , please try again later";
-            return redirect()->back();
-        } else {
-            BookTest::create($input);
-            return redirect('/');
-        }
+        //
     }
 
     /**

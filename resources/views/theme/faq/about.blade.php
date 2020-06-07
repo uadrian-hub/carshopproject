@@ -121,8 +121,7 @@
                             <select>
                                 <option value="">Choose Our Services</option>
                                 <option value="">Buy Cars</option>
-                                <option value="">Sell Cars</option>
-                                <option value="">Wash Cars</option>
+                                <option value="">Rent Cars</option>
                             </select>
                         </div>
                     </div>

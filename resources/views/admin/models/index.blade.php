@@ -56,7 +56,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="model_id"> Brand </label>
+            <label for="model_id"> Model </label>
         </br>
             <select class="form-control col-sm-5" name="model_id">
                 <option value="{{ null }}"> Select Type </option>

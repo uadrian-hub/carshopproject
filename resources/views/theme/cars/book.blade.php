@@ -39,10 +39,23 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <form action="{{action('BookingController@store')}}" method="POST">
+                    <form action="{{action('admin\AppoimentController@addEvent')}}" method="POST" encytype="multipart/form-data">
+                        <div class="col-xs-12 sm-12 col-md-12">
+
+                            @if(Session::has('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success')}}
+                            </div>
+                            @elseif (Session::has('warning'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('warning')}}
+                            </div>
+                            @endif
+                        </div>
                         @csrf
                         <input type="hidden" value="{{$cars->unique_sku}}" name="unique_sku">
                         <input type="hidden" value="{{$cars->id}}" name="car_id">
+                        <input type="hidden" value="{{$cars->name}}" name="event_name">
                         <div class="row">
                             <div class="col-lg-6">
                                 <input type="text" placeholder="First Name" name="first_name">
@@ -53,8 +66,21 @@
                             <div class="col-lg-6">
                                 <input type="text" placeholder="Email" name="email">
                             </div>
-                            <br>
-                            
+                            <div class="container">
+                                <h3>Avability</h3>
+                                <div class="row">
+                                
+                            <div class="col-lg-6">
+                                <input type="date" class="form-control" name="start_date">
+                                {!! $errors->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
+                            </div>
+                       
+                            <div class="col-lg-6">
+                                <input type="date" class="form-control" name="end_date">
+                                {!! $errors->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
+                            </div>
+                        </div>
+                        </div>
                         </div>
                         
                         <h3>Car Details</h3>
